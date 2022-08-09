@@ -16,8 +16,17 @@ import {
 const SigInScreen = () => {
   const { currentStep, goToNextStep, goToPreviousStep } = useSteps(2);
 
+  // a estilização, infelizmente, tem que ficar nesse 'contentContainerStyle'
+  // o alignItems vai acabar com a estrutura da tela se for usado no Container
+
+  // keyboardVerticalOffset são quantas unidades a tela vai ser empurrada pra cima
+  // -100 ficou certinho no meu emulador: Pixel 4
   return (
-    <Container>
+    <Container
+      behavior='position'
+      contentContainerStyle={{flex: 1, alignItems: 'center', width: '100%'}}
+      keyboardVerticalOffset={-100}  
+    >
       <Header />
       <CodeminerLogo source={Logo} />
       <AppName>PunchClock</AppName>
