@@ -1,46 +1,52 @@
-import styled, { css } from "styled-components/native";
-import { moderateScale } from "react-native-size-matters";
+import styled, { css } from 'styled-components/native';
+import { moderateScale } from 'react-native-size-matters';
 
-const buttonPrimaryStyles = css`
-  background-color: ${({ theme }) => theme.colors.primary};
-  border-color: ${({ theme }) => theme.colors.primary};
-  border-width: ${moderateScale(1)}px;
-`;
+const buttonContainerModifiers = {
+  primary: theme => css`
+    background-color: ${theme.colors.primary};
+    border-color: ${theme.colors.primary};
+    border-width: ${moderateScale(1)}px;
+  `,
+  secondary: theme => css`
+    background-color: ${theme.colors.accent};
+    border-color: ${theme.colors.primary};
+    border-width: ${moderateScale(1)}px;
+  `,
+  ghost: theme => css`
+    background-color: ${theme.colors.accent};
+    border-color: transparent;
+    border-width: ${moderateScale(1)}px;
+  `,
+};
 
-const buttonTextPrimaryStyles = css`
-  color: ${({ theme }) => theme.colors.accent};
-`;
-
-const buttonSecondaryStyles = css`
-  background-color: ${({ theme }) => theme.colors.accent};
-  border-color: ${({ theme }) => theme.colors.primary};
-  border-width: ${moderateScale(1)}px;
-`;
-
-const buttonTextSecondaryStyles = css`
-  color: ${({ theme }) => theme.colors.primary};
-`;
-
-const buttonStyles = {
-  primary: buttonPrimaryStyles,
-  secondary: buttonSecondaryStyles,
-}
-
-const buttonTextStyles = {
-  primary: buttonTextPrimaryStyles,
-  secondary: buttonTextSecondaryStyles,
-}
+const buttonTextModifiers = {
+  primary: theme => css`
+    color: ${theme.colors.accent};
+  `,
+  secondary: theme => css`
+    color: ${theme.colors.primary};
+  `,
+  ghost: theme => css`
+    color: ${theme.colors.primary};
+  `,
+};
 
 export const ButtonContainer = styled.TouchableOpacity`
-  margin-bottom: ${({ theme }) => theme.spacing.s}px;
-  justify-content: center;
-  padding: ${(props) => props.size}px;
-  border-radius: ${moderateScale(8)}px;
-  ${(props) => buttonStyles[props.color]};
+  ${({ theme, variant, size }) => css`
+    margin-bottom: ${theme.spacing.s}px;
+    justify-content: center;
+    padding: ${size}px;
+    border-radius: ${moderateScale(8)}px;
+
+    ${buttonContainerModifiers[variant](theme)};
+  `}
 `;
 
 export const ButtonText = styled.Text`
-  font-size: ${(props) => props.size}px;
-  text-align: center;
-  ${(props) => buttonTextStyles[props.color]};
+  ${({ theme, variant, size }) => css`
+    font-size: ${size}px;
+    text-align: center;
+
+    ${buttonTextModifiers[variant](theme)};
+  `}
 `;

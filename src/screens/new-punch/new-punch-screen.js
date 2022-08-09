@@ -12,7 +12,7 @@ import {
   SelectWrapper,
 } from "./new-punch-screen.styles";
 import Button from "../../components/button/button";
-import SelectForm from "../../components/select/select-form";
+import RHFSelect from "../../components/select/rhf-select";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import useNewPunchScreen from "./use-new-punch-screen";
 import DatePicker from "@react-native-community/datetimepicker";
@@ -41,7 +41,7 @@ const NewPunchScreen = () => {
           <InfoContainer>
             <NewPunchDate>{today}</NewPunchDate>
             <SelectWrapper>
-              <SelectForm
+              <RHFSelect
                 height={30}
                 control={control}
                 name="project"
@@ -113,12 +113,12 @@ const NewPunchScreen = () => {
           <Button
             onPress={handleSubmit(onSubmit)}
             title="Salvar"
-            color="primary"
+            variant="primary"
           />
           <Button
             onPress={() => navigation.navigate("PunchListScreen")}
             title="Cancelar"
-            color="secondary"
+            variant="secondary"
           />
         </Container>
       </Template>

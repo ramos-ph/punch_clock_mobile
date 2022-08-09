@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
 import Input from "./input";
 
-const InputForm = ({ control, name, placeholder, height, editable = true }) => (
+const RHFInput = ({ control, name, placeholder, height, editable = true }) => (
   <Controller
     control={control}
     name={name}
@@ -19,4 +19,4 @@ const InputForm = ({ control, name, placeholder, height, editable = true }) => (
   />
 );
 
-export default InputForm;
+export default RHFInput;

@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import SignInScreen from "@screens/signin/signin-screen";
 import PunchListScreen from "@screens/punch-list/punch-list-screen";
 import SettingsScreen from "@screens/settings/settings-screen";
 import CalendarScreen from "@screens/calendar/calendar-screen";
@@ -13,8 +14,9 @@ const MainNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="PunchListScreen"
+        initialRouteName="SignIn"
       >
+        <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="PunchListScreen" component={PunchListScreen} />
         <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
         <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
