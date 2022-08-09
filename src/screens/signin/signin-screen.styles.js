@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
+  align-items: center;
   background-color: ${({ theme }) => theme.colors.accent};
 `;
 
@@ -22,9 +23,7 @@ export const AppName = styled.Text`
 export const Header = styled.View`
   position: absolute;
   background-color: ${({ theme }) => theme.colors.primary};
-  /* vai encolher o header e o form se o
-     tamanho não for fixo. */
-  height: 300px;
+  height: ${({ height }) => height * 0.4}px;
   width: 100%;
   border-bottom-right-radius: ${moderateScale(110)}px;
   border-bottom-left-radius: ${moderateScale(110)}px;
@@ -33,7 +32,7 @@ export const Header = styled.View`
 export const AuthCard = styled.View`
   background-color: ${({ theme }) => theme.colors.accent};
   width: 75%;
-  height: 380px;
+  height: ${({ height }) => height * 0.45}px;
   border-radius: ${moderateScale(10)}px;
   elevation: 5;
   margin-top: ${verticalScale(20)}px;

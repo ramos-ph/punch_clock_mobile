@@ -25,7 +25,7 @@ const defaultValues = {
   password: '',
 };
 
-const SigInForm = ({ onSubmit }) => {
+const SigInForm = ({ onSubmit, height }) => {
   const { control, handleSubmit: rhfHandleSubmit } = useForm({
     defaultValues,
     mode: 'onBlur',
@@ -38,7 +38,7 @@ const SigInForm = ({ onSubmit }) => {
   };
 
   return (
-    <AuthCard>
+    <AuthCard height={height}>
       <ScreenTitle>Sign In</ScreenTitle>
 
       <FormContainer>

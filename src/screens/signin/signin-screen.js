@@ -12,26 +12,22 @@ import {
   AppName,
   CodeminerLogo,
 } from './signin-screen.styles';
+import { useWindowDimensions } from 'react-native';
 
 const SigInScreen = () => {
   const { currentStep, goToNextStep, goToPreviousStep } = useSteps(2);
-
-  // a estilização, infelizmente, tem que ficar nesse 'contentContainerStyle'
-  // o alignItems vai acabar com a estrutura da tela se for usado no Container
-
-  // keyboardVerticalOffset são quantas unidades a tela vai ser empurrada pra cima
-  // -100 ficou certinho no meu emulador: Pixel 4
+  const { height } = useWindowDimensions()
   return (
     <Container
       behavior='position'
       contentContainerStyle={{flex: 1, alignItems: 'center', width: '100%'}}
       keyboardVerticalOffset={-100}  
     >
-      <Header />
+      <Header height={height} />
       <CodeminerLogo source={Logo} />
       <AppName>PunchClock</AppName>
 
-      {currentStep === 1 && <SigInForm onSubmit={goToNextStep} />}
+      {currentStep === 1 && <SigInForm height={height} onSubmit={goToNextStep} />}
       {currentStep === 2 && <OtpForm onCancel={goToPreviousStep} />}
     </Container>
   );
